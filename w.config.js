@@ -75,17 +75,6 @@ var productionPlugins = [
   }),
 ];
 
-// dev server
-var devServer = {
-  contentBase: './server',
-  colors: true,
-  historyApiFallback: false,
-  port: 8080, // defaults to "8080"
-  hot: true, // Hot Module Replacement
-  inline: true, // Livereload
-  host: '0.0.0.0',
-  disableHostCheck: true
-};
 
 module.exports = {
   entry: entry,
@@ -93,7 +82,6 @@ module.exports = {
   output: output,
   loaders: loaders,
   productionPlugins: productionPlugins,
-  devServer: devServer,
   postcss: function () {
     return [precss, autoprefixer];
   },
