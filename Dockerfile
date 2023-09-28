@@ -5,7 +5,7 @@ WORKDIR /app
 COPY . .
 
 # Install npm
-RUN npm install
+RUN npm install -g serve
 RUN npm run build
 
 FROM nginx:alpine
