@@ -47,25 +47,6 @@ var loaders = [
     }
 ];
 
-// dev plugin
-var devPlugins =  [
-  new CopyWebpackPlugin([
-    { from: './src/resource/music/music.mp3' },
-    { from: './src/resource/css/loader.css' },
-  ]),
-  // 热更新
-  new webpack.HotModuleReplacementPlugin(),
-  // 允许错误不打断程序, 仅开发模式需要
-  new webpack.NoErrorsPlugin(),
-  // 打开浏览器页面
-  new OpenBrowserPlugin({
-    url: 'http://127.0.0.1:8080/'
-  }),
-  // css打包
-  new ExtractTextPlugin('css.css', {
-    allChunks: true
-  }),
-]
 
 // production plugin
 var productionPlugins = [
@@ -111,7 +92,6 @@ module.exports = {
   devtool: devtool,
   output: output,
   loaders: loaders,
-  devPlugins: devPlugins,
   productionPlugins: productionPlugins,
   devServer: devServer,
   postcss: function () {
