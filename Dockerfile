@@ -10,8 +10,6 @@ RUN npm install
 
 COPY . .
 
-RUN npm start
-
-EXPOSE 80
+EXPOSE 8080
 
 CMD [ "node", "webpack.config.js" ]
