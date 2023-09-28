@@ -1,15 +1,15 @@
-FROM node:12
+FROM node:14 as buildstep
 
 # Create app directory
 WORKDIR /app
-
-COPY package.json ./
+COPY . .
 
 # Install npm
 RUN npm install
+RUN npm run build
 
-COPY . .
+FROM nginx:alpine
+COPY --from=buildstep /app/build/ /usr/share/nginx/html
 
-EXPOSE 8080
-
-CMD [ "node", "webpack.config.js" ]
+EXPOSE 80
+CMD ["nginx","-g","daemon off;"]
